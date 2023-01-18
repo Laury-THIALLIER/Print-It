@@ -30,7 +30,11 @@ dots = document.querySelectorAll(".dot");
 dots[imgNumber].setAttribute("class", "dot dot_selected");
 
 document.getElementById("arrow_left").addEventListener("click", () => {
-  imgNumber--;
+  if (imgNumber == 0) {
+    imgNumber = slides.length - 1;
+  } else {
+    imgNumber--;
+  }
   document
     .querySelector(".banner-img")
     .setAttribute(
@@ -45,7 +49,11 @@ document.getElementById("arrow_left").addEventListener("click", () => {
 });
 
 document.getElementById("arrow_right").addEventListener("click", () => {
-  imgNumber++;
+  if (imgNumber == slides.length - 1) {
+    imgNumber = 0;
+  } else {
+    imgNumber++;
+  }
   document
     .querySelector(".banner-img")
     .setAttribute(
@@ -58,3 +66,6 @@ document.getElementById("arrow_right").addEventListener("click", () => {
   });
   dots[imgNumber].setAttribute("class", "dot dot_selected");
 });
+
+console.log(slides.length);
+console.log(imgNumber);
