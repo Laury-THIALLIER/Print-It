@@ -29,12 +29,7 @@ for (i = 0; i < slides.length; i++) {
 dots = document.querySelectorAll(".dot");
 dots[imgNumber].setAttribute("class", "dot dot_selected");
 
-document.getElementById("arrow_left").addEventListener("click", () => {
-  if (imgNumber == 0) {
-    imgNumber = slides.length - 1;
-  } else {
-    imgNumber--;
-  }
+const updateSlide = () => {
   document
     .querySelector(".banner-img")
     .setAttribute(
@@ -46,6 +41,15 @@ document.getElementById("arrow_left").addEventListener("click", () => {
     dot.setAttribute("class", "dot");
   });
   dots[imgNumber].setAttribute("class", "dot dot_selected");
+};
+
+document.getElementById("arrow_left").addEventListener("click", () => {
+  if (imgNumber == 0) {
+    imgNumber = slides.length - 1;
+  } else {
+    imgNumber--;
+  }
+  updateSlide();
 });
 
 document.getElementById("arrow_right").addEventListener("click", () => {
@@ -54,18 +58,5 @@ document.getElementById("arrow_right").addEventListener("click", () => {
   } else {
     imgNumber++;
   }
-  document
-    .querySelector(".banner-img")
-    .setAttribute(
-      "src",
-      "./assets/images/slideshow/" + slides[imgNumber]["image"]
-    );
-  document.getElementById("tagline").innerHTML = slides[imgNumber]["tagLine"];
-  dots.forEach((dot) => {
-    dot.setAttribute("class", "dot");
-  });
-  dots[imgNumber].setAttribute("class", "dot dot_selected");
+  updateSlide();
 });
-
-console.log(slides.length);
-console.log(imgNumber);
