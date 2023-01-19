@@ -18,15 +18,15 @@ const slides = [
   },
 ];
 
-imgNumber = 0;
+let imgNumber = 0;
 
 for (i = 0; i < slides.length; i++) {
-  dot = document.createElement("i");
+  let dot = document.createElement("i");
   dot.setAttribute("class", "dot");
   document.querySelector(".dots").appendChild(dot);
 }
 
-dots = document.querySelectorAll(".dot");
+let dots = document.querySelectorAll(".dot");
 dots[imgNumber].setAttribute("class", "dot dot_selected");
 
 const updateSlide = () => {
